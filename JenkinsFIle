@@ -18,7 +18,7 @@ pipeline{
         }
         stage("Imprime cositas"){
             steps{
-                echo "Soy un Stage aparte"
+                echo "Soy un Stage aparte "
             }
         }
     }
