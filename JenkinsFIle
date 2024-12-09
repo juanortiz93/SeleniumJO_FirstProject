@@ -1,0 +1,25 @@
+pipeline{
+    //En que agente esto va a estar corriendo
+    agent any
+    //Que herramientas vamos a estar instalando al principio
+    tools{
+        gradle "Gradle"
+    }
+
+    stages{
+        stage("Tareas de limpieza"){
+            steps{
+                //Agarrar el repo en que esta el codigo que vamos a correr
+                git 'https://github.com/juanortiz93/SeleniumJO_FirstProject.git'
+                //Ejecutar la tarea clean de Gradle
+                sh 'gradle clean'
+            }          
+            
+        }
+        stage("Imprime cositas"){
+            steps{
+                echo "Soy un Stage aparte"
+            }
+        }
+    }
+}
