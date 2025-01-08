@@ -1,4 +1,4 @@
-@Navigation
+
 Feature: Navigation bar
     To see the subpages
     without logging in
@@ -22,7 +22,7 @@ Scenario: Courses are presented correctly to potencial customers
     And Select Introducción al Testing
     Then Introducción al Testing de Software page loads correctly
 
-@Plans
+
 Scenario: Users can select a plan when signin up   
     When I select Elegir plan
     Then I can validate the options in the checkout page

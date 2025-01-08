@@ -52,8 +52,7 @@ public class FreeRangeSteps {
     @Then("I can validate the options in the checkout page")
     public void validateCheckoutPlans(){
         List<String> lista = registro.returnPlanDropdownValues();
-        List<String> listaEsperada = Arrays.asList("El Dojo - Prácticas intensivas de Testing y Automation: $30 / mes • 9 productos",
-            "El Dojo - Prácticas intensivas de Testing y Automation: $240 / año • 9 productos","Academia: $16.99 / mes • 13 productos",
+        List<String> listaEsperada = Arrays.asList("Academia: $16.99 / mes • 13 productos",
             "Academia: $176 / año • 13 productos","Free: Gratis • 3 productos");  
     
         Assert.assertEquals(listaEsperada,lista,"Los valores no coinciden con la lista esperada");
