@@ -56,29 +56,65 @@ public class BasePage {
 
     // Encuentra y devuelve un WebElement en la pagina utilizando un locator Xpath,
     // esperando a que esté presente en el DOM
-    private WebElement Find(String locator){
-        return wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(locator)));
+    private WebElement Find(String locator) {
+        try {
+            return wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(locator)));
+        } catch (Exception e) {
+            System.out.println("Error al encontrar el elemento: " + locator);
+            e.printStackTrace();
+            return null;
+        }
     }
 
-    public void clickElement(String locator){
-        Find(locator).click();
+    public void clickElement(String locator) {
+        try {
+            WebElement element = Find(locator);
+            if (element != null) {
+                element.click();
+            }
+        } catch (Exception e) {
+            System.out.println("Error al hacer clic en el elemento: " + locator);
+            e.printStackTrace();
+        }
     }
 
-    public void write(String locator,String keysToSend){
-        Find(locator).clear();
-        Find(locator).sendKeys(keysToSend);
+    public void write(String locator, String keysToSend) {
+        try {
+            WebElement element = Find(locator);
+            if (element != null) {
+                element.clear();
+                element.sendKeys(keysToSend);
+            }
+        } catch (Exception e) {
+            System.out.println("Error al escribir en el elemento: " + locator);
+            e.printStackTrace();
+        }
     }
 
-    public void selectFromDropdownByValue(String locator,String value){
-        Select dropdown = new Select(Find(locator));
-
-        dropdown.selectByValue(value);
+    public void selectFromDropdownByValue(String locator, String value) {
+        try {
+            WebElement element = Find(locator);
+            if (element != null) {
+                Select dropdown = new Select(element);
+                dropdown.selectByValue(value);
+            }
+        } catch (Exception e) {
+            System.out.println("Error al seleccionar por valor en el dropdown: " + locator);
+            e.printStackTrace();
+        }
     }
 
-    public void selectFromDropdownByIndex(String locator,int index){
-        Select dropdown = new Select(Find(locator));
-
-        dropdown.selectByIndex(index);
+    public void selectFromDropdownByIndex(String locator, int index) {
+        try {
+            WebElement element = Find(locator);
+            if (element != null) {
+                Select dropdown = new Select(element);
+                dropdown.selectByIndex(index);
+            }
+        } catch (Exception e) {
+            System.out.println("Error al seleccionar por índice en el dropdown: " + locator);
+            e.printStackTrace();
+        }
     }
 
     public int dropdownSize(String locator){
@@ -89,14 +125,28 @@ public class BasePage {
         return dropdownOptions.size();
     }
 
-    public List<String> getDropdownValues(String locator){
-        Select dropdown = new Select(Find(locator));
-
-        List<WebElement> dropdownOptions = dropdown.getOptions();
+    /**
+     * Obtiene los valores de un dropdown dado su localizador.
+     *
+     * @param locator El localizador del dropdown.
+     * @return Una lista de valores (texto) de las opciones del dropdown.
+     */
+    public List<String> getDropdownValues(String locator) {
         List<String> values = new ArrayList<>();
-        for(WebElement option: dropdownOptions){
-            values.add(option.getText());
-
+        try {
+            WebElement dropdownElement = Find(locator);
+            if (dropdownElement != null) {
+                Select dropdown = new Select(dropdownElement);
+                List<WebElement> dropdownOptions = dropdown.getOptions();
+                for (WebElement option : dropdownOptions) {
+                    values.add(option.getText());
+                }
+            } else {
+                System.out.println("Dropdown no encontrado: " + locator);
+            }
+        } catch (Exception e) {
+            System.out.println("Error al obtener los valores del dropdown: " + locator);
+            e.printStackTrace();
         }
         return values;
     }

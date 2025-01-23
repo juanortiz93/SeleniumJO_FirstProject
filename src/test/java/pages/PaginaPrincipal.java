@@ -1,28 +1,57 @@
 package pages;
 
+import java.net.URL;
+
+import org.openqa.selenium.WebDriver;
+
 public class PaginaPrincipal extends BasePage{
 
     private String sectionLink = "//a[normalize-space()='%s' and @href]";
     private String elegirPlanButton = "//a[normalize-space()='Elegir Plan' and @href]";
 
-    public PaginaPrincipal(){
+    public PaginaPrincipal() {
         super(driver);
     }
 
-    //Metodo para navegar a www.freerangetesters.com
-    public void navigateToFreeRangeTesters(){
-        navigateTo("https://www.freerangetesters.com");
-        
+    // Método para navegar a www.freerangetesters.com
+    public void navigateToFreeRangeTesters() {
+        String url = "https://www.freerangetesters.com";
+        if (isValidURL(url)) {
+            navigateTo(url);
+        } else {
+            System.out.println("URL no válida: " + url);
+        }
     }
 
-    public void clickOnSectionNavigationBar(String section){
-        //Reemplaza el marcador de posicion en sectionLink con el nombre
-        String xpathSection = String.format(sectionLink,section);
-        clickElement(xpathSection);
+    // Método para hacer clic en una sección de la barra de navegación
+    public void clickOnSectionNavigationBar(String section) {
+        try {
+            // Reemplaza el marcador de posición en sectionLink con el nombre
+            String xpathSection = String.format(sectionLink, section);
+            clickElement(xpathSection);
+        } catch (Exception e) {
+            System.out.println("Error al hacer clic en la sección: " + section);
+            e.printStackTrace();
+        }
     }
 
-    public void clickOnElegirPlanButton(){
-        clickElement(elegirPlanButton);
+    // Método para hacer clic en el botón "Elegir Plan"
+    public void clickOnElegirPlanButton() {
+        try {
+            clickElement(elegirPlanButton);
+        } catch (Exception e) {
+            System.out.println("Error al hacer clic en el botón 'Elegir Plan'");
+            e.printStackTrace();
+        }
     }
-    
+
+    // Método para validar la URL
+    private boolean isValidURL(String url) {
+        try {
+            new URL(url).toURI();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }
