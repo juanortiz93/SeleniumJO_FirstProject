@@ -19,7 +19,7 @@ Scenario Outline: I can access the subpages through the navigation bar
 
 Scenario: Courses are presented correctly to potencial customers
     When I go to Cursos using the navigation bar
-    And Select Introducción al Testing
+    And Select Introduccion al Testing
     Then Introducción al Testing de Software page loads correctly
 
 
