@@ -28,7 +28,7 @@ public class BasePage {
      * Se inicializa inmediatamente con una instancia dew WebDriverWait utilizando el 'driver' estático
      * WebDriverWait se usa para poner esperas explícitas en los elementos web
      */
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     /* 
      * Configura el WebDriver para Chrome usando WebDriverManager.
      * WebDriverManager va a estar descargando y configurando automáticamente el driver del navegador
