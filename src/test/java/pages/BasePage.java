@@ -151,4 +151,24 @@ public class BasePage {
         return values;
     }
 
+    // Método para obtener el texto del título
+    public String getLocatorText(String locator) {
+        try {
+            WebElement titleElement = Find(locator);
+            if (titleElement != null) {
+                return titleElement.getText();
+            } else {
+            System.out.println("Elemento no encontrado: " + locator);
+            return null;
+        }
+            
+        } catch (Exception e) {
+            System.out.println("Error al obtener el texto del título ");
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+
+
 }

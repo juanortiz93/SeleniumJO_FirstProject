@@ -4,7 +4,11 @@ package pages;
 
 public class PaginaFundamentosTesting extends BasePage {
 
+    
+
     private String introduccionTestingLink = "//a[normalize-space()='Introducción al Testing de Software' and @href]";
+    private String IntroduccionTestingTitle = "//h2[normalize-space()='Introducción al Testing de Software']";
+
     
 
     public PaginaFundamentosTesting(){
@@ -15,9 +19,12 @@ public class PaginaFundamentosTesting extends BasePage {
         clickElement(introduccionTestingLink);
     }
 
-    public String traerTitulo(){
-        return driver.getTitle();
+    public String getIntroduccionTestingTitle(){
+        
+        return getLocatorText(IntroduccionTestingTitle);
     }
+    
+    
 
     
 

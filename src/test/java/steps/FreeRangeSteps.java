@@ -45,7 +45,7 @@ public class FreeRangeSteps {
 
     @Then("Introducción al Testing de Software page loads correctly")
     public void validateCurso(){
-        String titulo = fundamentosPage.traerTitulo();
+        String titulo = fundamentosPage.getIntroduccionTestingTitle();
         Assert.assertEquals(titulo,"Introducción al Testing de Software","El titulo no coincide");
     }
 

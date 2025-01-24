@@ -16,6 +16,7 @@ Scenario Outline: I can access the subpages through the navigation bar
         | Udemy     |
         | Mentorías |
         | Blog      |
+        | Academia  |
 
 Scenario: Courses are presented correctly to potencial customers
     When I go to Cursos using the navigation bar
