@@ -1,8 +1,7 @@
 package pages;
 
+import java.net.URI;
 import java.net.URL;
-
-import org.openqa.selenium.WebDriver;
 
 public class PaginaPrincipal extends BasePage{
 
@@ -45,12 +44,22 @@ public class PaginaPrincipal extends BasePage{
         }
     }
 
-    // Método para validar la URL
-    private boolean isValidURL(String url) {
+    /**
+     * Valida si una URL es correcta y accesible
+     * @param urlStr La URL a validar
+     * @return true si la URL es válida, false en caso contrario
+     */
+    private boolean isValidURL(String urlStr) {
         try {
-            new URL(url).toURI();
-            return true;
+            URI uri = URI.create(urlStr);
+            URL url = uri.toURL();
+            
+            // Verifica si el esquema y el host son válidos
+            return "https".equalsIgnoreCase(uri.getScheme()) 
+                && url.getHost() != null 
+                && !url.getHost().isEmpty();
         } catch (Exception e) {
+            System.out.println("URL inválida: " + urlStr + " - Error: " + e.getMessage());
             return false;
         }
     }
