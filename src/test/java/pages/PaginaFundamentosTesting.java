@@ -15,18 +15,21 @@ public class PaginaFundamentosTesting extends BasePage {
         super(driver);
     }
 
-    public void clickIntroduccionTestingLink(){
-        clickElement(introduccionTestingLink);
+    public String getIntroduccionTestingLink() {
+        return introduccionTestingLink;
     }
 
     public String getIntroduccionTestingTitle(){
-        
+
         return getLocatorText(IntroduccionTestingTitle);
     }
-    
-    
 
-    
+    public void clickIntroduccionTestingLink(){
+        clickElement(getIntroduccionTestingLink());
+    }
 
-    
+
+
+
+
 }

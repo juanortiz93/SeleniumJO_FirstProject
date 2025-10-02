@@ -14,14 +14,19 @@ public class PaginaCursos extends BasePage {
         super(driver);
     }
 
+    public String getFundamentosTestingLink() {
+        return fundamentosTestingLink;
+    }
+
     public void clickFundamentosTestingLink(){
         try {
-            clickElement(fundamentosTestingLink);
+            clickElement(getFundamentosTestingLink());
         } catch (Exception e) {
             System.out.println("Error al hacer clic en el enlace 'Introducción al Testing de Software'");
             e.printStackTrace();
         }
         
     }
+
 
 }

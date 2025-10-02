@@ -15,6 +15,10 @@ import pages.PaginaRegistro;
 
 public class FreeRangeSteps {
 
+    public FreeRangeSteps(){
+        
+    }
+
     SoftAssert soft = new SoftAssert();
 
     PaginaPrincipal landingPage = new PaginaPrincipal();

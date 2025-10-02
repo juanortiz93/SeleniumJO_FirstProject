@@ -158,9 +158,9 @@ public class BasePage {
             if (titleElement != null) {
                 return titleElement.getText();
             } else {
-            System.out.println("Elemento no encontrado: " + locator);
-            return null;
-        }
+                System.out.println("Elemento no encontrado: " + locator);
+                return null;
+            }
             
         } catch (Exception e) {
             System.out.println("Error al obtener el texto del título ");
@@ -168,6 +168,17 @@ public class BasePage {
             return null;
         }
     }
+
+    public List<WebElement> bringMeAllElements(String locator) {
+        try {
+            return driver.findElements(By.className(locator));
+        } catch (Exception e) {
+            System.out.println("Error al encontrar los elementos: " + locator);
+            e.printStackTrace();
+            return null;
+        }
+    }
+   
 
 
 
